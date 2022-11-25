@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + Lit + TS</title>
+    <link rel="stylesheet" href="./src/index.css" />
+    <script type="module" src="/src/card-hand.ts"></script>
+  </head>
+  <body>
+    <div class="example" style="max-width: 56rem;">
+      <card-hand id="card-hand-1" interactive="true" cards='S14,S8,S2,H7,H6,H3,H2,C9,C6,C5,C3,R10,R2'></card-hand>
+    </div>
+    
+    <script>
+      const cardHand1 = document.querySelector('#card-hand-1');
+      cardHand1.addEventListener('cardSelected', (event) => {
+        let cards = cardHand1.getAttribute("cards").split(',')
+        if (event.detail.action === 'confirm') {
+          cards.splice(event.detail.index, 1)
+          console.log('cardSelected', event.detail)
+          cardHand1.setAttribute('cards', cards)
+        }
+      });
+    </script>
+    <div class="example" style="max-width: 30rem;">
+      <card-hand interactive="true" cards='S14,S8,S2,H7,H6,H3,H2,C9,C6,C5,C3,R10,R2'></card-hand>
+    </div>
+    <div class="example" style="max-width: 56rem;">
+      <card-hand interactive="true" cards='SA,ST,sj,sq,sk,S8,S2,H7,H6'></card-hand>
+    </div>
+    
+    <div class="example" style="max-width: 30rem;">
+      <card-hand interactive="true" cards='S14,S8,S2,H7,H6'></card-hand>
+    </div>
+  </body>
+</html>
