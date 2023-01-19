@@ -17,7 +17,7 @@ export interface ICardClick {
 
 // SHRC s3,h3,r3,c3
 
-const suites: string[] = ["s", "h", "r", "c"];
+const suites: string[] = ["s", "h", "d", "c"];
 
 function getSuite(text: string): ICardSuit {
   const suite = suites.indexOf(text);
